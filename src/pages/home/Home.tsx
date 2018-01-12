@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'dva';
 import * as styles from './Home.less';
 import { Layout } from 'antd';
-
+import Header from './header/header';
 @(connect(({ login }: any) => ({ login })) as any)
 export default class Home extends React.PureComponent<HomeProps, any> {
   constructor(props: HomeProps) {
@@ -28,7 +28,7 @@ export default class Home extends React.PureComponent<HomeProps, any> {
     return (
       <Layout className={styles.wrapper}>
         <Layout.Header className={styles.header}>
-          header
+          <Header/>
         </Layout.Header>
         <Layout>
           <Layout.Sider>
