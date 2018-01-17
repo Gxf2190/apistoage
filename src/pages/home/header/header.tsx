@@ -21,15 +21,16 @@ export default class Header extends React.PureComponent<HomeProps, any> {
 
   public render() {
     return (
-       <div>
+       <div className={styles.header}>
             <Avatar 
-                size="large"
-                icon="user"
-                 />
+              size="large"
+              icon="user"
+                />
             <Input.Search
-            placeholder="input search api "
-            onSearch={value => console.log(value)}
-            style={{ width: 200 }}
+              size="large"
+              placeholder="input search api "
+              onSearch={value => console.log(value)}
+              style={{ width: 200 }}
             />
        </div>
     );
