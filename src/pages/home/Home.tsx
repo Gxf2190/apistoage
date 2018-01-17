@@ -30,21 +30,8 @@ export default class Home extends React.PureComponent<HomeProps, any> {
         <Layout.Header className={styles.header}>
           <Header/>
         </Layout.Header>
-        <Layout>
-          <Layout.Sider>
-          侧边栏
-          </Layout.Sider>
-        </Layout>
-        <Layout className={styles.container}>
-          <Layout.Content>
-            内容
-          </Layout.Content>
-        </Layout>
-        <Layout>
-          <Layout.Footer>
-            底部
-          </Layout.Footer>
-        </Layout>
+     
+        
       </Layout>
     );
   }
