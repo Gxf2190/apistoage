@@ -11,6 +11,7 @@ import LangModel from './pages/home/components/lang/lang.model';
 import registerServiceWorker from './registerServiceWorker';
 import Home from './pages/home/Home';
 import HomeModel from './pages/home/Home.model';
+import HeaderModel from './pages/home/header/header.model';
 // import Login from './pages/login/Login';
 // import LoginModel from './pages/login/Login.model';
 import 'antd/dist/antd.less';
@@ -22,6 +23,7 @@ const app = dva({
 
 app.model(LangModel);
 app.model(HomeModel);
+app.model(HeaderModel);
 // app.model(LoginModel);
 
 app.router(({ history }: any) => {

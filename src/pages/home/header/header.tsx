@@ -5,11 +5,13 @@ import * as styles from './header.less';
 const Search = Input.Search;
 const InputGroup  = Input.Group;
 const Option   = Select.Option ;
-@(connect(({ login }: any) => ({ login })) as any)
+@(connect(({ headers }: any) => ({ headers })) as any)
 export default class Header extends React.PureComponent<HomeProps, any> {
   constructor(props: HomeProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      method: "VIEW"
+    };
   }
   componentDidMount() {
     
@@ -27,12 +29,26 @@ export default class Header extends React.PureComponent<HomeProps, any> {
   }
   Serach = (url) =>
   {
-      if(url !== '') {
+      if(url !=='') {
         let reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
         if(!reg.test(url)) {
           this.openNotification();
+        }else{
+         console.log(this)
+          this.props.dispatch({
+            type: 'headers/getviews',
+            payload: { url: url },
+          })
+          
         }
       }
+  }
+  handleChange = (value) =>
+  {
+      this.setState({method: value});
+      setTimeout(()=>{
+        alert(this.state.method);
+      });
   }
   render() {
     return (
@@ -41,8 +57,14 @@ export default class Header extends React.PureComponent<HomeProps, any> {
             <Col span={4}> 
               <h2 className={styles.apicolor}>在线接口管理工具</h2>
             </Col>
-            <Col span={12}> 
-              <Search placeholder="请输入API接口地址，格式为【协议】：//【主机名】：端口号(可选)" enterButton="Search" size="large"  onSearch={this.Serach}/>
+            <Col span={15}>
+              <Select defaultValue="VIEW" style={{ width: 120 }} onChange={this.handleChange} className={styles.pos}>
+                <Option value="VIEW">VIEW</Option>
+                <Option value="GET">GET</Option>
+                <Option value="PATCH">PATCH</Option>
+                <Option value="PUT">PUT</Option>
+              </Select>
+              <Search placeholder="请输入API接口地址，格式为【协议】：//【主机名】：端口号(可选)" style={{ marginLeft: '120px' }} enterButton="Search" size="large"  onSearch={this.Serach}/>
             </Col>
           </Row>
        </div>
