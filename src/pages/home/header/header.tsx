@@ -27,18 +27,17 @@ export default class Header extends React.PureComponent<HomeProps, any> {
       icon: <Icon type="close-circle" style={{ color: 'red' }} />,
     });
   }
-  Serach = (url) =>
+  Serach = (url: string) =>
   {
       if(url !=='') {
         let reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
         if(!reg.test(url)) {
           this.openNotification();
-        }else{
-         console.log(this)
+        } else{
           this.props.dispatch({
-            type: 'headers/getviews',
-            payload: { url: url },
-          })
+            type: "headers/getViews",
+            payload: {api: url},
+          });
           
         }
       }

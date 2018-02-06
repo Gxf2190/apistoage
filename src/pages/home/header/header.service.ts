@@ -1,6 +1,6 @@
 import request from '../../../utils/request';
-export async function viewApi(url) {
-    return request(url.url, {
+export async function viewApi(api) {
+    return request(api.api, {
       method: 'VIEW',
     });
   }
